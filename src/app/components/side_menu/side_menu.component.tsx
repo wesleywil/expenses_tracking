@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaChartArea, FaMoneyBillWave } from "react-icons/fa";
+import { FaChartArea, FaMoneyBillWave, FaClipboard } from "react-icons/fa";
 import SessionMenu from "../session_menu/session_menu.component";
 
 const SideMenu = () => {
@@ -8,17 +8,25 @@ const SideMenu = () => {
       <SessionMenu />
       <div className="mt-4">
         <ul className="flex flex-col items-center gap-2 text-2xl">
-          <li>
+          <li className="w-full">
             <Link href="/" className="self-start flex gap-2 items-center">
-              <FaChartArea /> DashBoard
+              <FaChartArea /> <span className="text-xl">DashBoard</span>
             </Link>
           </li>
-          <li>
+          <li className="w-full">
             <Link
               href="/expenses"
               className="self-start flex gap-2 items-center"
             >
-              <FaMoneyBillWave /> Expenses
+              <FaMoneyBillWave /> <span className="text-xl">Expenses</span>
+            </Link>
+          </li>
+          <li className="w-full">
+            <Link
+              href="/categories"
+              className="self-start flex gap-2 items-center"
+            >
+              <FaClipboard /> <span className="text-xl">Categories</span>
             </Link>
           </li>
         </ul>
