@@ -2,10 +2,12 @@ import { FaSearch } from "react-icons/fa";
 
 import ExpensesItem from "../components/expenses_item/expenses_item.component";
 import ExpensesList from "../components/expenses_list/expenses_list.component";
+import FormExpenses from "../components/form_expenses/form_expenses.component";
 
 export default function Expenses() {
   return (
     <main className="grow p-4 px-24 min-h-screen text-xl">
+      <FormExpenses />
       <div className="mt-12 pb-4 flex justify-between text-4xl border-b-2">
         <h1>Expenses</h1>
         <button className="px-3 py-4 bg-black text-2xl text-white rounded-xl">
