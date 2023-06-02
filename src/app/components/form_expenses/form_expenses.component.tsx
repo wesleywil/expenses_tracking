@@ -1,24 +1,32 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { Category } from "@/utils/types";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState, AppDispatch } from "@/app/redux/store";
+import {
+  selectCategory,
+  fetchCategories,
+} from "@/app/redux/categories/categories";
+import { createExpense } from "@/app/redux/expenses/expenses";
+import { handleHideForm } from "@/app/redux/utils/utils";
 
 const FormExpenses = () => {
-  const [category, setCategory] = useState<Category | null>({} as Category);
-  const [categories, setCategories] = useState<Category[]>([]);
+  const categories = useSelector(
+    (state: RootState) => state.categories.categories
+  );
+  const category = useSelector((state: RootState) => state.categories.category);
+  const status = useSelector((state: RootState) => state.categories.status);
+  const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() => {
-    const getCategories = async () => {
-      const req = await fetch("http://localhost:3000/api/categories");
-      const categories: Category[] = await req.json();
-      return setCategories(categories);
-    };
-    getCategories();
-  }, [category]);
+    if (status === "idle") {
+      dispatch(fetchCategories());
+    }
+  }, [status]);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
-    const selected = categories.find((item) => item.id === value);
-    setCategory(selected || null);
+    dispatch(selectCategory(value));
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -39,6 +47,7 @@ const FormExpenses = () => {
     };
 
     console.log("DATA=> ", data);
+    dispatch(createExpense(data));
   };
   return (
     <div className="absolute w-4/5 h-4/5 flex flex-col items-center justify-center ">
@@ -85,9 +94,16 @@ const FormExpenses = () => {
             ))}
           </select>
 
-          <div className="w-full flex gap-4 justify-end">
+          <div className="w-full flex gap-4 justify-center">
             <button className="px-2 bg-black text-4xl text-white rounded">
               Create
+            </button>
+            <button
+              onClick={() => dispatch(handleHideForm())}
+              type="button"
+              className="px-2 bg-black text-4xl text-white rounded"
+            >
+              Cancel
             </button>
           </div>
         </form>
