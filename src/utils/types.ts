@@ -1,5 +1,3 @@
-import { Decimal } from "@prisma/client/runtime";
-
 export interface User{
     id:String,
     name?:String,
@@ -21,7 +19,7 @@ export interface Expense{
     created_at:Date,
     description?:String,
     status?:String,
-    amount?:Decimal,
+    amount?:number,
     user:User,
     userId:String,
     categories?: Category[],
