@@ -5,12 +5,15 @@ import { FaSearch } from "react-icons/fa";
 import type { RootState, AppDispatch } from "../redux/store";
 import { handleHideForm } from "../redux/utils/utils";
 
-import ExpensesItem from "../components/expenses_item/expenses_item.component";
 import ExpensesList from "../components/expenses_list/expenses_list.component";
 import FormExpenses from "../components/form_expenses/form_expenses.component";
+import ExpensesItemList from "../components/expenses_item_list/expenses_item_list.component";
 
 export default function Expenses() {
   const hide_form = useSelector((state: RootState) => state.utils.hide_form);
+  const count_expenses = useSelector(
+    (state: RootState) => state.expenses.expenses.length
+  );
   const dispatch = useDispatch<AppDispatch>();
   return (
     <main className="grow p-4 px-24 min-h-screen text-xl">
@@ -28,20 +31,16 @@ export default function Expenses() {
       {/* Recently Updated */}
       <div className="pt-4">
         <h2>Recently Updated</h2>
-        <div className="mt-12 flex gap-4">
-          <ExpensesItem />
-          <ExpensesItem />
-          <ExpensesItem />
-          <ExpensesItem />
-          <ExpensesItem />
-        </div>
+        <ExpensesItemList />
       </div>
       {/* List of Expenses */}
       <div className="mt-8 pt-4">
         <div className="flex justify-between items-center">
           <h2 className="self-center">
             All Expenses
-            <span className="ml-2 p-1 bg-slate-300  rounded-full">99</span>
+            <span className="ml-2 p-1 bg-slate-300  rounded-full">
+              {count_expenses}
+            </span>
           </h2>
           <div className="flex text-2xl">
             <input

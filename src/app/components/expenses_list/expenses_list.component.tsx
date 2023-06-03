@@ -1,4 +1,9 @@
+import { useSelector } from "react-redux";
+import type { RootState } from "@/app/redux/store";
+
 const ExpensesList = () => {
+  const expenses = useSelector((state: RootState) => state.expenses.expenses);
+
   return (
     <div className="mt-4 border">
       <table className="w-full border-collapse table-auto">
@@ -14,75 +19,36 @@ const ExpensesList = () => {
           </tr>
         </thead>
         <tbody className="">
-          <tr className="border text-center">
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <div className="flex flex-col gap-1">
-                Vendor here here here
-                <span className="text-base text-slate-500">category here</span>
-              </div>
-            </td>
-            <td>
-              <div className="flex flex-col gap-1">
-                09/09/23
-                <span className="text-base text-slate-500">
-                  description, goes, here
-                </span>
-              </div>
-            </td>
-            <td>cell4_1</td>
-            <td>
-              $3000.00 <span className="text-sm text-slate-600">usd</span>{" "}
-            </td>
-          </tr>
-          <tr className="border text-center">
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <div className="flex flex-col gap-1">
-                Vendor here here here
-                <span className="text-base text-slate-500">category here</span>
-              </div>
-            </td>
-            <td>
-              <div className="flex flex-col gap-1">
-                09/09/23
-                <span className="text-base text-slate-500">
-                  description, goes, here
-                </span>
-              </div>
-            </td>
-            <td>cell4_2</td>
-            <td>
-              $3000.00 <span className="text-sm text-slate-600">usd</span>{" "}
-            </td>
-          </tr>
-          <tr className="border text-center">
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <div className="flex flex-col gap-1">
-                Vendor here here here
-                <span className="text-base text-slate-500">category here</span>
-              </div>
-            </td>
-            <td>
-              <div className="flex flex-col gap-1">
-                09/09/23
-                <span className="text-base text-slate-500">
-                  description, goes, here
-                </span>
-              </div>
-            </td>
-            <td>cell4_3</td>
-            <td>
-              $3000.00 <span className="text-sm text-slate-600">usd</span>{" "}
-            </td>
-          </tr>
+          {expenses.length
+            ? expenses.map((item, index) => (
+                <tr className="border text-center" key={index}>
+                  <td>
+                    <input type="checkbox" />
+                  </td>
+                  <td>
+                    <div className="flex flex-col gap-1">
+                      {item.vendor}
+                      <span className="text-base text-slate-500">
+                        {String(item.categories?.map((item) => item.name))}
+                      </span>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="flex flex-col gap-1">
+                      {String(item.created_at).slice(0, 10)}
+                      <span className="text-base text-slate-500">
+                        {item.description}
+                      </span>
+                    </div>
+                  </td>
+                  <td>{item.status}</td>
+                  <td>
+                    ${item.amount}{" "}
+                    <span className="text-sm text-slate-600">usd</span>{" "}
+                  </td>
+                </tr>
+              ))
+            : ""}
         </tbody>
       </table>
     </div>
