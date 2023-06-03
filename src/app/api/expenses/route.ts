@@ -2,7 +2,11 @@ import { NextResponse } from "next/server";
 import prisma from "../../../../prisma/client";
 
 export async function GET(request:Request){
-    const expenses = await prisma.expense.findMany();
+    const expenses = await prisma.expense.findMany({
+        include:{
+            categories:true
+        }
+    });
     return NextResponse.json(expenses);
 }
 
