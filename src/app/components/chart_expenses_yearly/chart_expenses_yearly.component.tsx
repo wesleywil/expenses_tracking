@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "@/app/redux/store";
-import { setData } from "@/app/redux/charts/charts";
+import { setDataBar } from "@/app/redux/charts/charts";
 import { Bar, XAxis, YAxis, CartesianGrid } from "recharts";
 
 const BarChart = dynamic(
@@ -12,14 +12,14 @@ const BarChart = dynamic(
   { ssr: false }
 );
 
-const ChartExpenses = () => {
+const ChartExpensesYearly = () => {
   const bardata = useSelector((state: RootState) => state.charts.barData);
   const expenses = useSelector((state: RootState) => state.expenses.expenses);
   const year = useSelector((state: RootState) => state.charts.year);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(setData(expenses));
+    dispatch(setDataBar(expenses));
     console.log("ss", bardata);
   }, [expenses, year]);
   return (
@@ -34,4 +34,4 @@ const ChartExpenses = () => {
   );
 };
 
-export default ChartExpenses;
+export default ChartExpensesYearly;
