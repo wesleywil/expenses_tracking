@@ -6,9 +6,15 @@ interface barData {
   expenses: number;
 }
 
+interface pieData {
+  category: string;
+  total: number;
+}
+
 export interface ChartState {
   year: string;
   barData: barData[];
+  pieData: pieData[];
 }
 
 const initialState: ChartState = {
@@ -27,6 +33,7 @@ const initialState: ChartState = {
     { month: "Nov", expenses: 0 },
     { month: "Dec", expenses: 0 },
   ],
+  pieData: [],
 };
 
 export const chartSlice = createSlice({
@@ -36,7 +43,7 @@ export const chartSlice = createSlice({
     setYear: (state, action: PayloadAction<string>) => {
       state.year = action.payload;
     },
-    setData: (state, action: PayloadAction<Expense[]>) => {
+    setDataBar: (state, action: PayloadAction<Expense[]>) => {
       const setdata = [
         {
           month: "Jan",
@@ -137,9 +144,34 @@ export const chartSlice = createSlice({
       ];
       state.barData = setdata;
     },
+    setDataPie: (state, action: PayloadAction<Expense[]>) => {
+      const expenses = action.payload;
+      const pieData: pieData[] = [];
+
+      //Calculate the total amount for each category
+      expenses.forEach((expense) => {
+        if (expense.categories && expense.categories.length > 0) {
+          expense.categories.forEach((category) => {
+            const existingCategory = pieData.find(
+              (data) => data.category === category.name
+            );
+            if (existingCategory) {
+              existingCategory.total += Number(expense.amount || "0");
+            } else {
+              pieData.push({
+                category: category.name,
+                total: Number(expense.amount || "0"),
+              });
+            }
+          });
+        }
+      });
+      console.log("PIEDATA REDUX", pieData);
+      state.pieData = pieData;
+    },
   },
 });
 
-export const { setYear, setData } = chartSlice.actions;
+export const { setYear, setDataBar, setDataPie } = chartSlice.actions;
 
 export default chartSlice.reducer;
