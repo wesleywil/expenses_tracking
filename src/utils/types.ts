@@ -1,26 +1,26 @@
 export interface User{
-    id:String,
-    name?:String,
-    email?:String,
-    image?:String,
+    id:string,
+    name?:string,
+    email?:string,
+    image?:string,
     expenses?:Expense[]
 }
 
 
 export interface Category {
-    id:String,
-    name:String,
-    description:String,
+    id:string,
+    name:string,
+    description:string,
 }
 
 export interface Expense{
-    id?:String,
-    vendor?:String,
+    id?:string,
+    vendor?:string,
     created_at:Date,
-    description?:String,
-    status?:String,
+    description?:string,
+    status?:string,
     amount?:number,
     user:User,
-    userId:String,
+    userId:string,
     categories?: Category[],
 }
