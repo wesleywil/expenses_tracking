@@ -36,6 +36,7 @@ const FormExpenses = () => {
       amount: { value: number };
       description: { value: string };
       status: { value: string };
+      created_at: { value: string };
     };
 
     const data = {
@@ -44,10 +45,12 @@ const FormExpenses = () => {
       description: target.description.value,
       status: target.status.value,
       categories: category,
+      created_at: new Date(target.created_at.value),
     };
 
     console.log("DATA=> ", data);
     dispatch(createExpense(data));
+    dispatch(handleHideForm());
   };
   return (
     <div className="absolute w-4/5 h-4/5 flex flex-col items-center justify-center ">
@@ -66,6 +69,12 @@ const FormExpenses = () => {
           <input
             type="text"
             name="amount"
+            placeholder="Amount of the expense"
+            className="w-full px-2 py-4 outline-0 border rounded"
+          />
+          <input
+            type="datetime-local"
+            name="created_at"
             className="w-full px-2 py-4 outline-0 border rounded"
           />
           <textarea

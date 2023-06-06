@@ -12,7 +12,7 @@ export async function GET(request:Request){
 
 export async function POST(request:Request){
 
-    const { vendor, amount, description, status, categories } = await request.json();
+    const { vendor, amount, description, status, categories, created_at } = await request.json();
     try {
         const expenses = await prisma.expense.create({
             data:{
@@ -20,7 +20,7 @@ export async function POST(request:Request){
                 amount,
                 description,
                 status,
-                created_at: new Date(),
+                created_at,
                 userId:"cli0hemgu0000lulgzrvtb59r",
                 categories:{
                     connect:{
