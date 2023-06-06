@@ -27,8 +27,12 @@ const ChartExpensesYearly = () => {
       <BarChart width={750} height={400} data={bardata}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="month" />
-        <YAxis />
-        <Bar dataKey="expenses" fill="red" />
+        <YAxis label={{ fill: "white" }} />
+        <Bar
+          dataKey="expenses"
+          fill="red"
+          label={{ position: "top", fontWeight: "bold", fill: "white" }}
+        />
       </BarChart>
     </div>
   );
