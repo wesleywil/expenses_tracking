@@ -10,6 +10,8 @@ export interface User{
 export interface Category {
     id:string,
     name:string,
+    color:string,
+    textColor:string,
     description:string,
 }
 
