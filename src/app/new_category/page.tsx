@@ -3,12 +3,14 @@ import prisma from "../../../prisma/client";
 
 async function createCategory(data: any) {
   "use server";
-  let { name, description } = Object.fromEntries(data);
+  let { name, description, color, textColor } = Object.fromEntries(data);
 
   await prisma.category.create({
     data: {
       name,
       description,
+      color,
+      textColor,
     },
   });
 
@@ -30,6 +32,18 @@ export default function NewCategory() {
             placeholder="Category's name"
             className="w-full px-2 py-4 outline-0 border rounded"
           />
+
+          <div className="w-full p-2 flex gap-4 border rounded">
+            <div className="flex flex-col">
+              <h2 className="text-xl text-slate-400">Tag color</h2>
+              <input type="color" name="color" />
+            </div>
+            <div className="flex flex-col">
+              <h2 className="text-xl text-slate-400">Tag Text Color</h2>
+              <input type="color" name="textColor" />
+            </div>
+          </div>
+
           <textarea
             name="description"
             rows={10}
