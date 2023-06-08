@@ -1,12 +1,12 @@
 "use client";
 
 import { useSelector, useDispatch } from "react-redux";
-import type { RootState, AppDispatch } from "./redux/store";
-import { setYear } from "./redux/charts/charts";
+import type { RootState, AppDispatch } from "../redux/store";
+import { setYear } from "../redux/charts/charts";
 
-import ChartExpensesYearly from "./components/chart_expenses_yearly/chart_expenses_yearly.component";
+import ChartExpensesYearly from "../components/chart_expenses_yearly/chart_expenses_yearly.component";
 import { ChangeEvent, useEffect, useState } from "react";
-import ChartTotalCategories from "./components/chart_total_categories/chart_total_categories.component";
+import ChartTotalCategories from "../components/chart_total_categories/chart_total_categories.component";
 
 export default function Home() {
   const year = useSelector((state: RootState) => state.charts.year);

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import type { RootState, AppDispatch } from "@/app/redux/store";
-import { fetchExpenses } from "@/app/redux/expenses/expenses";
+import type { RootState, AppDispatch } from "@/redux/store";
+import { fetchExpenses } from "@/redux/expenses/expenses";
 
 import ExpensesItem from "../expenses_item/expenses_item.component";
 

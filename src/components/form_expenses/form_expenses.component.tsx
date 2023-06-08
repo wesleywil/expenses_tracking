@@ -2,13 +2,10 @@
 
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import type { RootState, AppDispatch } from "@/app/redux/store";
-import {
-  selectCategory,
-  fetchCategories,
-} from "@/app/redux/categories/categories";
-import { createExpense } from "@/app/redux/expenses/expenses";
-import { handleHideForm } from "@/app/redux/utils/utils";
+import type { RootState, AppDispatch } from "@/redux/store";
+import { selectCategory, fetchCategories } from "@/redux/categories/categories";
+import { createExpense } from "@/redux/expenses/expenses";
+import { handleHideForm } from "@/redux/utils/utils";
 
 const FormExpenses = () => {
   const categories = useSelector(

@@ -1,6 +1,6 @@
 import { Category } from "@/utils/types";
 import Link from "next/link";
-import CategoryItem from "../components/category_item/category_item.component";
+import CategoryItem from "../../components/category_item/category_item.component";
 
 export default async function Categories() {
   const req = await fetch("http://localhost:3000/api/categories");

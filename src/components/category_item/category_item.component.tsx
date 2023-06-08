@@ -1,7 +1,7 @@
 "use client";
 
 import { useSelector } from "react-redux";
-import { RootState } from "@/app/redux/store";
+import { RootState } from "@/redux/store";
 
 import { Category } from "@/utils/types";
 import { useEffect, useState } from "react";

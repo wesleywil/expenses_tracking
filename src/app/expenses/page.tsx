@@ -2,12 +2,12 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import { FaSearch } from "react-icons/fa";
-import type { RootState, AppDispatch } from "../redux/store";
-import { handleHideForm } from "../redux/utils/utils";
+import type { RootState, AppDispatch } from "../../redux/store";
+import { handleHideForm } from "../../redux/utils/utils";
 
-import ExpensesList from "../components/expenses_list/expenses_list.component";
-import FormExpenses from "../components/form_expenses/form_expenses.component";
-import ExpensesItemList from "../components/expenses_item_list/expenses_item_list.component";
+import ExpensesList from "../../components/expenses_list/expenses_list.component";
+import FormExpenses from "../../components/form_expenses/form_expenses.component";
+import ExpensesItemList from "../../components/expenses_item_list/expenses_item_list.component";
 
 export default function Expenses() {
   const hide_form = useSelector((state: RootState) => state.utils.hide_form);

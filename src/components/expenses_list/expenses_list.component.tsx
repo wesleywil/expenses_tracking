@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import type { RootState } from "@/app/redux/store";
+import type { RootState } from "@/redux/store";
 
 const ExpensesList = () => {
   const expenses = useSelector((state: RootState) => state.expenses.expenses);

@@ -3,8 +3,8 @@
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { useSelector, useDispatch } from "react-redux";
-import type { RootState, AppDispatch } from "@/app/redux/store";
-import { setDataBar } from "@/app/redux/charts/charts";
+import type { RootState, AppDispatch } from "@/redux/store";
+import { setDataBar } from "@/redux/charts/charts";
 import { Bar, XAxis, YAxis, CartesianGrid } from "recharts";
 
 const BarChart = dynamic(

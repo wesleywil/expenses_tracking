@@ -1,8 +1,8 @@
 import dynamic from "next/dynamic";
 import { useSelector, useDispatch } from "react-redux";
-import type { RootState, AppDispatch } from "@/app/redux/store";
+import type { RootState, AppDispatch } from "@/redux/store";
 import { Pie } from "recharts";
-import { setDataPie } from "@/app/redux/charts/charts";
+import { setDataPie } from "@/redux/charts/charts";
 import { useEffect } from "react";
 
 const PieChart = dynamic(
