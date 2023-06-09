@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { FaChartArea, FaMoneyBillWave, FaClipboard } from "react-icons/fa";
+import {
+  FaChartArea,
+  FaMoneyBillWave,
+  FaClipboard,
+  FaUserAlt,
+} from "react-icons/fa";
 import SessionMenu from "../session_menu/session_menu.component";
 
 const SideMenu = () => {
@@ -11,6 +16,14 @@ const SideMenu = () => {
           <li className="w-full">
             <Link href="/" className="self-start flex gap-2 items-center">
               <FaChartArea /> <span className="text-xl">DashBoard</span>
+            </Link>
+          </li>
+          <li className="w-full">
+            <Link
+              href="/profile"
+              className="self-start flex gap-2 items-center"
+            >
+              <FaUserAlt /> <span className="text-xl">Profile</span>
             </Link>
           </li>
           <li className="w-full">
