@@ -3,7 +3,8 @@ export interface User{
     name?:string,
     email?:string,
     image?:string,
-    expenses?:Expense[]
+    expenses?:Expense[],
+    userIncome: UserIncome[]
 }
 
 
@@ -25,4 +26,13 @@ export interface Expense{
     user:User,
     userId:string,
     categories?: Category[],
+}
+
+export interface UserIncome{
+    id?:string,
+    title:string,
+    at_date:Date,
+    description?:string,
+    amount:number,
+    user?: User,
 }
