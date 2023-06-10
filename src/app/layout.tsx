@@ -32,6 +32,14 @@ export default async function RootLayout({
       </html>
     );
   } else {
-    return <NotSignIn />;
+    return (
+      <html lang="en">
+        <body className="flex">
+          <Providers>
+            <NotSignIn />
+          </Providers>
+        </body>
+      </html>
+    );
   }
 }
