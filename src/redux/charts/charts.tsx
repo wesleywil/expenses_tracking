@@ -1,4 +1,4 @@
-import { Expense } from "@/utils/types";
+import { Expense, UserIncome } from "@/utils/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface barData {
@@ -11,10 +11,17 @@ interface pieData {
   total: number;
 }
 
+interface stackedBarData {
+  month: string;
+  incomes: number;
+  expenses: number;
+}
+
 export interface ChartState {
   year: string;
   barData: barData[];
   pieData: pieData[];
+  stackedBarData: stackedBarData[];
 }
 
 const initialState: ChartState = {
@@ -34,6 +41,7 @@ const initialState: ChartState = {
     { month: "Dec", expenses: 0 },
   ],
   pieData: [],
+  stackedBarData: [],
 };
 
 export const chartSlice = createSlice({
@@ -42,6 +50,146 @@ export const chartSlice = createSlice({
   reducers: {
     setYear: (state, action: PayloadAction<string>) => {
       state.year = action.payload;
+    },
+    setStackedBar: (
+      state,
+      action: PayloadAction<{ income: UserIncome[]; expenses: Expense[] }>
+    ) => {
+      const setData = [
+        {
+          month: "Jan",
+          incomes: action.payload.income
+            .filter(
+              (i) => String(i.at_date).slice(5, 7) === "01" || i.fixed === true
+            )
+            .reduce((total, income) => total + Number(income.amount!), 0),
+          expenses: action.payload.expenses
+            .filter((i) => String(i.created_at).slice(5, 7) === "01")
+            .reduce((total, expense) => total + Number(expense.amount!), 0),
+        },
+        {
+          month: "Feb",
+          incomes: action.payload.income
+            .filter(
+              (i) => String(i.at_date).slice(5, 7) === "02" || i.fixed === true
+            )
+            .reduce((total, income) => total + Number(income.amount!), 0),
+          expenses: action.payload.expenses
+            .filter((i) => String(i.created_at).slice(5, 7) === "02")
+            .reduce((total, expense) => total + Number(expense.amount!), 0),
+        },
+        {
+          month: "Mar",
+          incomes: action.payload.income
+            .filter(
+              (i) => String(i.at_date).slice(5, 7) === "03" || i.fixed === true
+            )
+            .reduce((total, income) => total + Number(income.amount!), 0),
+          expenses: action.payload.expenses
+            .filter((i) => String(i.created_at).slice(5, 7) === "03")
+            .reduce((total, expense) => total + Number(expense.amount!), 0),
+        },
+        {
+          month: "Apr",
+          incomes: action.payload.income
+            .filter(
+              (i) => String(i.at_date).slice(5, 7) === "04" || i.fixed === true
+            )
+            .reduce((total, income) => total + Number(income.amount!), 0),
+          expenses: action.payload.expenses
+            .filter((i) => String(i.created_at).slice(5, 7) === "04")
+            .reduce((total, expense) => total + Number(expense.amount!), 0),
+        },
+        {
+          month: "May",
+          incomes: action.payload.income
+            .filter(
+              (i) => String(i.at_date).slice(5, 7) === "05" || i.fixed === true
+            )
+            .reduce((total, income) => total + Number(income.amount!), 0),
+          expenses: action.payload.expenses
+            .filter((i) => String(i.created_at).slice(5, 7) === "05")
+            .reduce((total, expense) => total + Number(expense.amount!), 0),
+        },
+        {
+          month: "Jun",
+          incomes: action.payload.income
+            .filter(
+              (i) => String(i.at_date).slice(5, 7) === "06" || i.fixed === true
+            )
+            .reduce((total, income) => total + Number(income.amount!), 0),
+          expenses: action.payload.expenses
+            .filter((i) => String(i.created_at).slice(5, 7) === "06")
+            .reduce((total, expense) => total + Number(expense.amount!), 0),
+        },
+        {
+          month: "Jul",
+          incomes: action.payload.income
+            .filter(
+              (i) => String(i.at_date).slice(5, 7) === "07" || i.fixed === true
+            )
+            .reduce((total, income) => total + Number(income.amount!), 0),
+          expenses: action.payload.expenses
+            .filter((i) => String(i.created_at).slice(5, 7) === "07")
+            .reduce((total, expense) => total + Number(expense.amount!), 0),
+        },
+        {
+          month: "Aug",
+          incomes: action.payload.income
+            .filter(
+              (i) => String(i.at_date).slice(5, 7) === "08" || i.fixed === true
+            )
+            .reduce((total, income) => total + Number(income.amount!), 0),
+          expenses: action.payload.expenses
+            .filter((i) => String(i.created_at).slice(5, 7) === "08")
+            .reduce((total, expense) => total + Number(expense.amount!), 0),
+        },
+        {
+          month: "Sep",
+          incomes: action.payload.income
+            .filter(
+              (i) => String(i.at_date).slice(5, 7) === "09" || i.fixed === true
+            )
+            .reduce((total, income) => total + Number(income.amount!), 0),
+          expenses: action.payload.expenses
+            .filter((i) => String(i.created_at).slice(5, 7) === "09")
+            .reduce((total, expense) => total + Number(expense.amount!), 0),
+        },
+        {
+          month: "Oct",
+          incomes: action.payload.income
+            .filter(
+              (i) => String(i.at_date).slice(5, 7) === "10" || i.fixed === true
+            )
+            .reduce((total, income) => total + Number(income.amount!), 0),
+          expenses: action.payload.expenses
+            .filter((i) => String(i.created_at).slice(5, 7) === "10")
+            .reduce((total, expense) => total + Number(expense.amount!), 0),
+        },
+        {
+          month: "Nov",
+          incomes: action.payload.income
+            .filter(
+              (i) => String(i.at_date).slice(5, 7) === "11" || i.fixed === true
+            )
+            .reduce((total, income) => total + Number(income.amount!), 0),
+          expenses: action.payload.expenses
+            .filter((i) => String(i.created_at).slice(5, 7) === "11")
+            .reduce((total, expense) => total + Number(expense.amount!), 0),
+        },
+        {
+          month: "Dec",
+          incomes: action.payload.income
+            .filter(
+              (i) => String(i.at_date).slice(5, 7) === "12" || i.fixed === true
+            )
+            .reduce((total, income) => total + Number(income.amount!), 0),
+          expenses: action.payload.expenses
+            .filter((i) => String(i.created_at).slice(5, 7) === "12")
+            .reduce((total, expense) => total + Number(expense.amount!), 0),
+        },
+      ];
+      state.stackedBarData = setData;
     },
     setDataBar: (state, action: PayloadAction<Expense[]>) => {
       const setdata = [
@@ -196,6 +344,7 @@ export const chartSlice = createSlice({
   },
 });
 
-export const { setYear, setDataBar, setDataPie } = chartSlice.actions;
+export const { setYear, setDataBar, setDataPie, setStackedBar } =
+  chartSlice.actions;
 
 export default chartSlice.reducer;

@@ -7,6 +7,7 @@ import { setYear } from "../redux/charts/charts";
 import ChartExpensesYearly from "../components/chart_expenses_yearly/chart_expenses_yearly.component";
 import { ChangeEvent, useEffect, useState } from "react";
 import ChartTotalCategories from "../components/chart_total_categories/chart_total_categories.component";
+import ChartIncomeExpenses from "@/components/chart_income_expenses/chart_income_expenses.component";
 
 export default function Home() {
   const year = useSelector((state: RootState) => state.charts.year);
@@ -23,7 +24,7 @@ export default function Home() {
 
   return (
     <main className="grow flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="flex gap-4 justify-center">
+      <div className="flex flex-wrap gap-4 justify-center">
         {/* Expenses by Year Chart */}
         <div className=" p-2 bg-slate-300 rounded">
           <div className="flex justify-between">
@@ -58,6 +59,13 @@ export default function Home() {
             <h1>Expenses by Category</h1>
           </div>
           <ChartTotalCategories />
+        </div>
+        {/* Income x Expenses */}
+        <div className="p-2 bg-slate-300 rounded">
+          <div className="flex">
+            <h1>Income x Expenses</h1>
+          </div>
+          <ChartIncomeExpenses />
         </div>
       </div>
     </main>
