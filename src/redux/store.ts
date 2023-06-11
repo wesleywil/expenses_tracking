@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit/";
 import categoryReducer from "./categories/categories";
 import chartReducer from "./charts/charts";
 import expenseReducer from "./expenses/expenses";
+import userIncomeReducer from "./userIncome/userIncome";
 import utilsReducer from "./utils/utils";
 
 
@@ -11,6 +12,7 @@ export const store = configureStore({
         expenses:expenseReducer,
         utils: utilsReducer,
         charts:chartReducer,
+        userIncomes:userIncomeReducer,
     }
 })
 
