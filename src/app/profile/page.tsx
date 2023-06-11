@@ -46,6 +46,7 @@ export default async function Profile() {
                   at_date={item.at_date}
                   description={item.description}
                   amount={item.amount}
+                  fixed={item.fixed}
                 />
               ))
             : "NO INCOMES ADDED YET"}

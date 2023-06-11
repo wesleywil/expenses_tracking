@@ -1,9 +1,12 @@
 import { redirect } from "next/navigation";
 import prisma from "../../../prisma/client";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 
 async function createIncome(data: any) {
   "use server";
-  let { title, at_date, description, amount } = Object.fromEntries(data);
+  const session = await getServerSession(authOptions);
+  let { title, at_date, description, amount, fixed } = Object.fromEntries(data);
 
   await prisma.userIncome.create({
     data: {
@@ -11,10 +14,10 @@ async function createIncome(data: any) {
       at_date: new Date(at_date),
       description,
       amount,
-      userId: "cli0hemgu0000lulgzrvtb59r",
+      fixed: fixed === "on" ? true : false,
+      userId: session?.user.id,
     },
   });
-
   redirect("/profile");
 }
 
@@ -43,6 +46,12 @@ export default function NewCategory() {
             type="text"
             name="amount"
             placeholder="Income's amount"
+            className="w-full px-2 py-4 outline-0 border rounded"
+          />
+          <input
+            type="checkbox"
+            name="fixed"
+            placeholder="Income's is fixed"
             className="w-full px-2 py-4 outline-0 border rounded"
           />
           <textarea

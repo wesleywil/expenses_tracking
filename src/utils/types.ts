@@ -34,5 +34,6 @@ export interface UserIncome{
     at_date:Date,
     description?:string,
     amount:number,
+    fixed:boolean,
     user?: User,
 }

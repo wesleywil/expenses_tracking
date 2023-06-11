@@ -84,6 +84,7 @@ model UserIncome {
   at_date     DateTime
   description String?
   amount      Decimal  @db.Decimal(9, 2)
+  fixed       Boolean  @default(false)
   user        User     @relation(fields: [userId], references: [id])
   userId      String
 }
