@@ -18,7 +18,7 @@ const SessionMenu = () => {
         <div>
           <button
             onClick={() => signOut()}
-            className="px-2 flex gap-2 items-center bg-white text-black rounded"
+            className="px-2 flex gap-2 items-center bg-[#26b3c4] hover:bg-[#26b3c4]/70 text-[#fcfcfc] hover:text-slate-600 font-bold rounded"
           >
             <FaDoorOpen />
             SignOut

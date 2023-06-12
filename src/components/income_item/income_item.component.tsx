@@ -19,13 +19,13 @@ const IncomeItem = ({
   description,
 }: IncomeItemProps) => {
   return (
-    <div className="w-40 rounded-xl border-x-2 border-b-2 overflow-hidden">
-      <div className="w-full h-2 bg-red-300"></div>
+    <div className="w-40 bg-[#fcfcfc]  border-x-2 border-b-2 overflow-hidden rounded-xl">
+      <div className="w-full h-2 bg-[#26b3c4]"></div>
       <div className="h-56 pb-4 flex flex-col items-center justify-between  ">
-        <span className="text-slate-400 text-xl"> {title}</span>
+        <span className="text-slate-600 text-xl"> {title}</span>
         <div className="w-11/12 py-2 flex flex-col text-center">
-          <h1>${amount}</h1>
-          <h3 className="text-slate-500 text-base">
+          <h1 className="bg-[#2e2b2e]">${amount}</h1>
+          <h3 className="text-slate-600 text-base">
             {String(at_date).slice(0, 10)}
           </h3>
         </div>

@@ -23,6 +23,9 @@ const ExpensesItemList = () => {
               category_name={String(
                 item.categories?.map((category) => category.name)
               )}
+              category_color={String(
+                item.categories?.map((category) => category.color)
+              )}
               vendor={String(item.vendor)}
               date={String(item.created_at).slice(0, 10)}
               amount={item.amount!}

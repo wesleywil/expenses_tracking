@@ -27,7 +27,7 @@ const CategoryItem = ({ category }: CategoryItemProps) => {
   }, [rcount]);
 
   return (
-    <div className="flex w-48 h-24 border rounded-xl overflow-hidden">
+    <div className="flex w-48 h-24 bg-[#fcfcfc] border rounded-xl overflow-hidden">
       <div
         style={{ backgroundColor: category.color, color: category.textColor }}
         className="w-6 h-full flex items-center justify-center"

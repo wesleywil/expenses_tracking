@@ -8,7 +8,7 @@ const ExpensesList = () => {
     <div className="mt-4 border">
       <table className="w-full border-collapse table-auto">
         <thead>
-          <tr className="text-slate-400 text-base border">
+          <tr className="text-slate-300 text-base border">
             <th className="px-2">
               <input type="checkbox" />
             </th>
@@ -28,7 +28,7 @@ const ExpensesList = () => {
                   <td>
                     <div className="flex flex-col gap-1">
                       {item.vendor}
-                      <span className="text-base text-slate-500">
+                      <span className="text-base text-slate-300">
                         {String(item.categories?.map((item) => item.name))}
                       </span>
                     </div>
@@ -36,7 +36,7 @@ const ExpensesList = () => {
                   <td>
                     <div className="flex flex-col gap-1">
                       {String(item.created_at).slice(0, 10)}
-                      <span className="text-base text-slate-500">
+                      <span className="text-base text-slate-300">
                         {item.description}
                       </span>
                     </div>
@@ -44,7 +44,7 @@ const ExpensesList = () => {
                   <td>{item.status}</td>
                   <td>
                     ${item.amount}{" "}
-                    <span className="text-sm text-slate-600">usd</span>{" "}
+                    <span className="text-sm text-slate-400">usd</span>{" "}
                   </td>
                 </tr>
               ))

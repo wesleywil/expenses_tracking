@@ -9,7 +9,7 @@ import SessionMenu from "../session_menu/session_menu.component";
 
 const SideMenu = () => {
   return (
-    <div className="min-h-screen w-48 p-4 bg-black text-white">
+    <div className="min-h-screen w-48 p-4 bg-[#fcfcfc] text-[#2e2b2e]">
       <SessionMenu />
       <div className="mt-4">
         <ul className="flex flex-col items-center gap-2 text-2xl">

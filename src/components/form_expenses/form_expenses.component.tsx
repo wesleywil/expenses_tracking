@@ -50,7 +50,7 @@ const FormExpenses = () => {
     dispatch(handleHideForm());
   };
   return (
-    <div className="absolute w-4/5 h-4/5 flex flex-col items-center justify-center ">
+    <div className="absolute w-4/5 h-4/5 flex flex-col items-center justify-center text-[#2e2b2e]">
       <h1 className="text-">New Expense</h1>
       <div className="w-1/2 p-4 flex flex-col bg-black/50 rounded-xl">
         <form
@@ -101,13 +101,13 @@ const FormExpenses = () => {
           </select>
 
           <div className="w-full flex gap-4 justify-center">
-            <button className="px-2 bg-black text-4xl text-white rounded">
+            <button className="px-2 bg-[#26b3c4] text-4xl text-[#fcfcfc] rounded">
               Create
             </button>
             <button
               onClick={() => dispatch(handleHideForm())}
               type="button"
-              className="px-2 bg-black text-4xl text-white rounded"
+              className="px-2 bg-[#26b3c4] text-4xl text-[#fcfcfc] rounded"
             >
               Cancel
             </button>

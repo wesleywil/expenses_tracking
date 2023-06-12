@@ -6,12 +6,12 @@ export default async function Categories() {
   const req = await fetch("http://localhost:3000/api/categories");
   const categories: Category[] = await req.json();
   return (
-    <main className="grow p-4 px-24 min-h-screen text-xl">
+    <main className="grow p-4 px-24 min-h-screen text-xl text-[#fcfcfc]">
       <div className="mt-12 pb-4 flex justify-between text-4xl border-b-2">
         <h1>Categories</h1>
         <Link
           href="/new_category"
-          className="px-3 py-4 bg-black text-2xl text-white rounded-xl"
+          className="px-3 py-4 bg-[#26b3c4] text-2xl text-[#fcfcfc] rounded-xl"
         >
           New Category
         </Link>

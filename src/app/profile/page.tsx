@@ -10,12 +10,12 @@ export default async function Profile() {
   const user: User = await req.json();
 
   return (
-    <main className="grow p-4 px-24 min-h-screen text-xl">
+    <main className="grow p-4 px-24 min-h-screen text-xl text-[#fcfcfc]">
       <div className="mt-12 pb-4 flex justify-between text-4xl border-b-2">
         <h1>Profile</h1>
         <Link
           href="/new_income"
-          className="px-3 py-4 bg-black text-2xl text-white rounded-xl"
+          className="px-3 py-4 bg-[#26b3c4] hover:bg-[#26b3c4]/70 text-2xl text-[#fcfcfc] rounded-xl"
         >
           New Income
         </Link>

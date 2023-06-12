@@ -23,7 +23,7 @@ export default async function RootLayout({
   if (session) {
     return (
       <html lang="en">
-        <body className="flex">
+        <body className="flex bg-[#2e2b2e]">
           <Providers>
             <SideMenu />
             {children}
