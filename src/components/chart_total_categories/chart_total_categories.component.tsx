@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "@/redux/store";
-import { Pie } from "recharts";
+import { Pie, ResponsiveContainer, Tooltip } from "recharts";
 import { setDataPie } from "@/redux/charts/charts";
 import { useEffect } from "react";
 
@@ -16,7 +16,7 @@ const ChartTotalCategories = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const renderLabel = (entry: any) => {
-    return entry.name + " = " + entry.total;
+    return entry.name;
   };
 
   useEffect(() => {
@@ -24,19 +24,20 @@ const ChartTotalCategories = () => {
     console.log("PIE DATA=> ", piedata);
   }, [expenses]);
   return (
-    <div className="mt-4 p-2 border border-black rounded">
-      <PieChart width={750} height={400}>
-        <Pie
-          data={piedata}
-          dataKey="total"
-          nameKey="category"
-          cx="50%"
-          cy="50%"
-          outerRadius={80}
-          label={renderLabel}
-          fill="green"
-        />
-      </PieChart>
+    <div className="mt-4 p-2 border border-[#26b3c4] rounded">
+      <ResponsiveContainer width={350} height={350}>
+        <PieChart>
+          <Pie
+            data={piedata}
+            dataKey="total"
+            nameKey="category"
+            outerRadius={100}
+            fill="#2e2b2e"
+            label={renderLabel}
+          />
+          <Tooltip />
+        </PieChart>
+      </ResponsiveContainer>
     </div>
   );
 };

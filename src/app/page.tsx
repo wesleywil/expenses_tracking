@@ -23,10 +23,11 @@ export default function Home() {
   }, [year]);
 
   return (
-    <main className="grow flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="flex flex-wrap gap-4 justify-center">
+    <main className="grow p-2 flex min-h-screen flex-col items-center ">
+      <h1 className="mt-8 text-5xl text-[#fcfcfc] font-bold">DASHBOARD</h1>
+      <div className="mt-24 flex flex-wrap gap-4 justify-center">
         {/* Expenses by Year Chart */}
-        <div className=" p-2 bg-slate-300 rounded">
+        <div className=" p-2 bg-[#fcfcfc] rounded">
           <div className="flex justify-between">
             <h1>Expenses by Year</h1>
             <div className="flex gap-4">
@@ -35,13 +36,12 @@ export default function Home() {
                 <input
                   type="text"
                   placeholder="Year"
-                  className="w-24 px-2 rounded"
-                  defaultValue={year}
+                  className="w-24 px-2 bg-[#2e2b2e] text-[#26b3c4] rounded"
                   onChange={handleInputChange}
                 />
                 <button
                   onClick={() => dispatch(setYear(inputValue))}
-                  className="px-2 bg-black text-white rounded"
+                  className="px-2 bg-[#26b3c4] text-[#fcfcfc] rounded"
                 >
                   Change
                 </button>
@@ -54,14 +54,14 @@ export default function Home() {
           </div>
         </div>
         {/* Total Expenses Items - Category */}
-        <div className="p-2 bg-slate-300 rounded">
+        <div className="p-2 bg-[#fcfcfc] rounded">
           <div className="flex">
             <h1>Expenses by Category</h1>
           </div>
           <ChartTotalCategories />
         </div>
         {/* Income x Expenses */}
-        <div className="p-2 bg-slate-300 rounded">
+        <div className="p-2 bg-[#fcfcfc] rounded">
           <div className="flex">
             <h1>Income x Expenses</h1>
           </div>
