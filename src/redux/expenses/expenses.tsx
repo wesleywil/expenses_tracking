@@ -32,10 +32,40 @@ export const createExpense = createAsyncThunk(
   }
 );
 
+export const updateExpense = createAsyncThunk(
+  "expenses/updateExpense",
+  async ({ id, data }: { id: string; data: any }) => {
+    const res = await axios.put(
+      `http://localhost:3000/api/expenses/${id}`,
+      data
+    );
+    return res.data;
+  }
+);
+
+export const deleteExpense = createAsyncThunk(
+  "expenses/deleteExpense",
+  async ({ id }: { id: string }) => {
+    const res = await axios.delete(`http://localhost:3000/api/expenses/${id}`);
+    return res.data;
+  }
+);
+
 export const expenseSlice = createSlice({
   name: "expenses",
   initialState,
-  reducers: {},
+  reducers: {
+    selectExpense: (state, action: PayloadAction<string>) => {
+      const selectExpense = state.expenses.find(
+        (item) => item.id === action.payload
+      );
+      state.expense =
+        selectExpense !== undefined ? selectExpense : ({} as Expense);
+    },
+    resetExpense: (state) => {
+      state.expense = {} as Expense;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchExpenses.pending, (state) => {
@@ -56,10 +86,28 @@ export const expenseSlice = createSlice({
       })
       .addCase(createExpense.rejected, (state, { payload }) => {
         state.error = String(payload);
+      })
+      .addCase(updateExpense.pending, (state) => {
+        state.status = "updating";
+      })
+      .addCase(updateExpense.fulfilled, (state) => {
+        state.status = "updated";
+      })
+      .addCase(updateExpense.rejected, (state, { payload }) => {
+        state.error = String(payload);
+      })
+      .addCase(deleteExpense.pending, (state) => {
+        state.status = "deleting";
+      })
+      .addCase(deleteExpense.fulfilled, (state) => {
+        state.status = "deleted";
+      })
+      .addCase(deleteExpense.rejected, (state, { payload }) => {
+        state.error = String(payload);
       });
   },
 });
 
-export const {} = expenseSlice.actions;
+export const { selectExpense, resetExpense } = expenseSlice.actions;
 
 export default expenseSlice.reducer;

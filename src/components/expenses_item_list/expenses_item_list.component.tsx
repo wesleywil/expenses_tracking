@@ -10,7 +10,7 @@ const ExpensesItemList = () => {
   const status = useSelector((state: RootState) => state.expenses.status);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    if (status === "idle") {
+    if (status === "idle" || status === "updated" || status === "deleted") {
       dispatch(fetchExpenses());
     }
   }, [status]);
@@ -20,6 +20,7 @@ const ExpensesItemList = () => {
         ? expenses.map((item, index) => (
             <ExpensesItem
               key={index}
+              id={item.id!}
               category_name={String(
                 item.categories?.map((category) => category.name)
               )}
