@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { FaDoorOpen, FaSignInAlt } from "react-icons/fa";
 
@@ -9,9 +10,11 @@ const SessionMenu = () => {
     return (
       <div className="mt-4 flex flex-col items-center gap-4 justify-center">
         <div>
-          <img
+          <Image
+            width={100}
+            height={100}
             src={`${session?.user?.image}`}
-            alt={session?.user?.name + " profile picture"}
+            alt={session?.user.name + " profile picture"}
             className="rounded-full"
           />
         </div>
