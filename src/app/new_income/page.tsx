@@ -22,10 +22,10 @@ async function createIncome(data: any) {
   redirect("/profile");
 }
 
-export default function NewCategory() {
+export default function NewIncome() {
   return (
     <div className="w-full p-4 flex flex-col justify-center items-center text-3xl">
-      <h1 className="text-4xl text-[#fcfcfc]">New Category</h1>
+      <h1 className="text-4xl text-[#fcfcfc]">New Income</h1>
       <div className="w-1/2 p-4 flex flex-col">
         <form
           action={createIncome}

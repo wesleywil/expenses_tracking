@@ -61,6 +61,7 @@ export default async function Profile() {
             ? user!.userIncome.map((item, index) => (
                 <IncomeItem
                   key={index}
+                  id={item.id}
                   title={item.title}
                   at_date={item.at_date}
                   description={item.description!}
