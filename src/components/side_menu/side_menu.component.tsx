@@ -6,6 +6,7 @@ import {
   FaUserAlt,
 } from "react-icons/fa";
 import SessionMenu from "../session_menu/session_menu.component";
+import SideMenuLink from "../side_menu_link/side_menu_link.component";
 
 const SideMenu = () => {
   return (
@@ -13,35 +14,35 @@ const SideMenu = () => {
       <SessionMenu />
       <div className="mt-4">
         <ul className="flex flex-col items-center gap-2 text-2xl">
-          <li className="w-full">
+          <SideMenuLink stiffness={100}>
             <Link href="/" className="self-start flex gap-2 items-center">
               <FaChartArea /> <span className="text-xl">DashBoard</span>
             </Link>
-          </li>
-          <li className="w-full">
+          </SideMenuLink>
+          <SideMenuLink stiffness={150}>
             <Link
               href="/profile"
               className="self-start flex gap-2 items-center"
             >
               <FaUserAlt /> <span className="text-xl">Profile</span>
             </Link>
-          </li>
-          <li className="w-full">
+          </SideMenuLink>
+          <SideMenuLink stiffness={200}>
             <Link
               href="/expenses"
               className="self-start flex gap-2 items-center"
             >
               <FaMoneyBillWave /> <span className="text-xl">Expenses</span>
             </Link>
-          </li>
-          <li className="w-full">
+          </SideMenuLink>
+          <SideMenuLink stiffness={300}>
             <Link
               href="/categories"
               className="self-start flex gap-2 items-center"
             >
               <FaClipboard /> <span className="text-xl">Categories</span>
             </Link>
-          </li>
+          </SideMenuLink>
         </ul>
       </div>
     </div>

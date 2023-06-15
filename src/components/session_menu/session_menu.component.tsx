@@ -3,10 +3,13 @@
 import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { FaDoorOpen, FaSignInAlt } from "react-icons/fa";
+import LoadingSession from "../loading_session/loading_session.component";
 
 const SessionMenu = () => {
   const { data: session, status } = useSession();
-  if (status === "authenticated") {
+  if (status === "loading") {
+    return <LoadingSession />;
+  } else if (status === "authenticated") {
     return (
       <div className="mt-4 flex flex-col items-center gap-4 justify-center">
         <div>
