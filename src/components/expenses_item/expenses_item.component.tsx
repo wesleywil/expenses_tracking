@@ -55,8 +55,8 @@ const ExpensesItem = ({
           </button>
         </div>
 
-        <div className="flex flex-col">
-          <h1 className="bg-[#2e2b2e] px-2 text-center">{vendor}</h1>
+        <div className="flex flex-col text-center">
+          <h1 className="bg-[#2e2b2e] px-2 ">{vendor}</h1>
           <h3 className="text-slate-600 text-base"> {date} </h3>
         </div>
         <div className="w-2/3 text-slate-600 text-2xl text-center border-t-2 pt-4">
