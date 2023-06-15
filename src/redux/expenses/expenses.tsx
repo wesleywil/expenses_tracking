@@ -3,6 +3,7 @@ import axios from "axios";
 import { Expense } from "@/utils/types";
 
 export interface ExpenseState {
+  allExpenses: Expense[];
   expenses: Expense[];
   expense: Expense;
   status: string;
@@ -10,6 +11,7 @@ export interface ExpenseState {
 }
 
 const initialState: ExpenseState = {
+  allExpenses: [],
   expenses: [],
   expense: {} as Expense,
   status: "idle",
@@ -65,6 +67,26 @@ export const expenseSlice = createSlice({
     resetExpense: (state) => {
       state.expense = {} as Expense;
     },
+    filterExpense: (state, action: PayloadAction<string>) => {
+      if (action.payload === undefined || action.payload === null) {
+        return state;
+      } else if (action.payload === "") {
+        return {
+          ...state,
+          expenses: state.allExpenses,
+        };
+      } else {
+        let filteredExpenses = state.allExpenses.filter((item) => {
+          return item.vendor
+            ?.toLowerCase()
+            .includes(action.payload.toLowerCase());
+        });
+        return {
+          ...state,
+          expenses: filteredExpenses,
+        };
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -73,6 +95,7 @@ export const expenseSlice = createSlice({
       })
       .addCase(fetchExpenses.fulfilled, (state, { payload }) => {
         state.status = "success";
+        state.allExpenses = payload;
         state.expenses = payload;
       })
       .addCase(fetchExpenses.rejected, (state, { payload }) => {
@@ -108,6 +131,7 @@ export const expenseSlice = createSlice({
   },
 });
 
-export const { selectExpense, resetExpense } = expenseSlice.actions;
+export const { selectExpense, resetExpense, filterExpense } =
+  expenseSlice.actions;
 
 export default expenseSlice.reducer;

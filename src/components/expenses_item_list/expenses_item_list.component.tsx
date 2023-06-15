@@ -6,7 +6,9 @@ import { fetchExpenses } from "@/redux/expenses/expenses";
 import ExpensesItem from "../expenses_item/expenses_item.component";
 
 const ExpensesItemList = () => {
-  const expenses = useSelector((state: RootState) => state.expenses.expenses);
+  const expenses = useSelector(
+    (state: RootState) => state.expenses.allExpenses
+  );
   const status = useSelector((state: RootState) => state.expenses.status);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {

@@ -10,6 +10,7 @@ import ExpensesList from "../../components/expenses_list/expenses_list.component
 import FormExpenses from "../../components/form_expenses/form_expenses.component";
 import ExpensesItemList from "../../components/expenses_item_list/expenses_item_list.component";
 import DeletePanel from "@/components/delete_panel/delete_panel.component";
+import SearchExpenses from "@/components/search_expenses/search_expenses.component";
 
 export default function Expenses() {
   const hide_form = useSelector((state: RootState) => state.utils.hide_form);
@@ -17,7 +18,7 @@ export default function Expenses() {
     (state: RootState) => state.utils.hide_delete_msg
   );
   const count_expenses = useSelector(
-    (state: RootState) => state.expenses.expenses.length
+    (state: RootState) => state.expenses.allExpenses.length
   );
   const dispatch = useDispatch<AppDispatch>();
   return (
@@ -53,15 +54,7 @@ export default function Expenses() {
               {count_expenses}
             </span>
           </h2>
-          <div className="flex text-2xl">
-            <input
-              type="text"
-              className="w-96 px-2 py-1 text-[#2e2b2e] border rounded-y rounded-l outline-0"
-            />
-            <button className="px-2 py-1 bg-[#26b3c4] text-[#fcfcfc] rounded-r">
-              <FaSearch />
-            </button>
-          </div>
+          <SearchExpenses />
         </div>
         <ExpensesList />
       </div>
