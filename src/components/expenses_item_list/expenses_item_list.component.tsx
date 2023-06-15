@@ -17,23 +17,25 @@ const ExpensesItemList = () => {
     }
   }, [status]);
   return (
-    <div className="mt-12 flex gap-4">
+    <div className="mt-12 flex flex-wrap justify-center xl:justify-normal gap-4">
       {expenses.length
-        ? expenses.map((item, index) => (
-            <ExpensesItem
-              key={index}
-              id={item.id!}
-              category_name={String(
-                item.categories?.map((category) => category.name)
-              )}
-              category_color={String(
-                item.categories?.map((category) => category.color)
-              )}
-              vendor={String(item.vendor)}
-              date={String(item.created_at).slice(0, 10)}
-              amount={item.amount!}
-            />
-          ))
+        ? expenses
+            .slice(0, 6)
+            .map((item, index) => (
+              <ExpensesItem
+                key={index}
+                id={item.id!}
+                category_name={String(
+                  item.categories?.map((category) => category.name)
+                )}
+                category_color={String(
+                  item.categories?.map((category) => category.color)
+                )}
+                vendor={String(item.vendor)}
+                date={String(item.created_at).slice(0, 10)}
+                amount={item.amount!}
+              />
+            ))
         : ""}
     </div>
   );
