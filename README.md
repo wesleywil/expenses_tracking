@@ -1,34 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Expenses Tracking App - WW Finance Tracking
 
-## Getting Started
+Introducing "WW Finance Tracking", a user-friendly app designed to simplify your financial management. With individual accounts, you can effortlessly track your expenses and incomes, ensuring a clear understanding of your financial health. The app provides customizable categories for expenses, such as meals, travels, hobbies, and more, allowing you to efficiently organize your spending. Stay in control of your finances with this app and achieve your financial goals with ease.
 
-First, run the development server:
+## Tech Stack
+
+**Client:** ReactJS, Tailwindcss, Framer-Motion, React-Icons, React-Redux, Redux-Toolkit...
+
+**Bakcend:** NextJS, Prisma, MySQL...
+
+## Screenshots
+
+### Dashboard
+
+![DashBoard](https://i.imgur.com/d6yD27y.png)
+
+### Expenses
+
+![Expenses](https://i.imgur.com/s3PsFJ6.png)
+
+### Categories
+
+![Categories](https://i.imgur.com/gmBWHjm.png)
+
+### Form - Create Expense
+
+![Form](https://i.imgur.com/aTjbwfX.png)
+
+## Run Locally
+
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+  git clone https://github.com/wesleywil/expenses_tracking
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Frontend
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Install dependencies
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+  npm install
+```
 
-## Learn More
+Execute the Prisma commands
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+   npx prisma generate
+   npx prisma migrate dev
+   npx prisma db seed
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Start the server
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+  npm run dev
+```
 
-## Deploy on Vercel
+## Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To run this project, you will need to add the following environment variables to your .env file
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`DATABASE_URL`
+
+`NEXTAUTH_SECRET`
+
+`NEXTAUTH_URL`
+
+`GOOGLE_ID`
+
+`GOOGLE_SECRET`
+
+## Authors
+
+- [Wesley Wilson](https://github.com/wesleywil)
